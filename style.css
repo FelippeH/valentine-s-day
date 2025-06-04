@@ -5,21 +5,8 @@ body {
   position: relative;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url("./images/heart.jpg") no-repeat center center fixed;
-  background-size: cover;
-  filter: grayscale(100%);
-  z-index: -1;
-}
-
 canvas {
-  background: #222222f3;
+  background: #222222;
   display: block;
   position: relative;
   z-index: 1;
