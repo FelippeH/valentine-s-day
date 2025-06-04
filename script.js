@@ -27,7 +27,7 @@ function generateParticles() {
   }
 
   if (width < 600) {
-    const minGridSize = 15;
+    const minGridSize = 10;
     if (gridSize < minGridSize) {
       gridSize = minGridSize;
     }
