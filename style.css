@@ -8,8 +8,6 @@ body {
 canvas {
   background: #222222;
   display: block;
-  position: relative;
-  z-index: 1;
 }
 
 #toggleBtn {
