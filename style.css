@@ -8,7 +8,7 @@ body {
 
 #toggleBtn {
   position: fixed;
-  bottom: 10%;
+  bottom: 11%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -40,6 +40,23 @@ body {
 }
 
 canvas {
-  background: #222;
-  display: block;
+  position: absolute;
+  bottom: 44px;
+  background: #22222249;
+  z-index: 1;
+}
+
+.rodape {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
+  color: #8a8a8a;
+  font-size: 1.1rem;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
 }
