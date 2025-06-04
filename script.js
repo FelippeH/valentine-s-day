@@ -4,8 +4,8 @@ const ctx = canvas.getContext("2d");
 let particles = [];
 let isAssembled = false;
 
-const fixedCols = 180;
-const fixedRows = 90;
+const fixedCols = 100;
+const fixedRows = 50;
 
 function mapCoord(i, max, minVal, maxVal) {
   return minVal + (i / max) * (maxVal - minVal);
