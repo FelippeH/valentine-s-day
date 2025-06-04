@@ -4,8 +4,8 @@ const ctx = canvas.getContext("2d");
 let particles = [];
 let isAssembled = false;
 
-const fixedCols = 100;
-const fixedRows = 50;
+const fixedCols = 120;
+const fixedRows = 60;
 
 function mapCoord(i, max, minVal, maxVal) {
   return minVal + (i / max) * (maxVal - minVal);
@@ -27,7 +27,7 @@ function generateParticles() {
   }
 
   if (width < 600) {
-    const minGridSize = 8;
+    const minGridSize = 9;
     if (gridSize < minGridSize) {
       gridSize = minGridSize;
     }
