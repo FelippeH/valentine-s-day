@@ -1,7 +1,11 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const gridSize = 15;
+const targetCols = 30;
+const gridSize = canvas.width / targetCols;
+const cols = targetCols;
+const rows = Math.floor(canvas.height / gridSize);
+
 let particles = [];
 let isAssembled = false;
 
