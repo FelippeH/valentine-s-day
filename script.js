@@ -27,14 +27,14 @@ function generateParticles() {
   }
 
   if (width < 600) {
-    const minGridSize = 10;
+    const minGridSize = 9;
     if (gridSize < minGridSize) {
       gridSize = minGridSize;
     }
   }
 
   const centerX = width / 2;
-  const centerY = height / 2;
+  const centerY = height / 2.1;
 
   const heartMap = [];
   let colMin = fixedCols,
