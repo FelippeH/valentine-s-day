@@ -62,6 +62,8 @@ function generateParticles() {
     const startX = Math.random() * width;
     const startY = Math.random() * height;
 
+    const color = isAssembled ? [199, 27, 27] : [156, 156, 156];
+
     return {
       x: startX,
       y: startY,
@@ -71,6 +73,8 @@ function generateParticles() {
       originalTargetY: targetY,
       size: gridSize,
       speed: 0.01 + Math.random() * 0.005,
+      color,
+      currentColor: [156, 156, 156],
     };
   });
 }
@@ -87,12 +91,18 @@ btn.addEventListener("click", () => {
     if (isAssembled) {
       p.targetX = p.originalTargetX;
       p.targetY = p.originalTargetY;
+      p.color = [199, 27, 27];
     } else {
       p.targetX = Math.random() * canvas.width;
       p.targetY = Math.random() * canvas.height;
+      p.color = [156, 156, 156];
     }
   });
 });
+
+function interpolateColor(current, target, factor = 0.015) {
+  return current.map((c, i) => c + (target[i] - c) * factor);
+}
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -100,7 +110,11 @@ function animate() {
     p.x += (p.targetX - p.x) * p.speed;
     p.y += (p.targetY - p.y) * p.speed;
 
-    ctx.fillStyle = "#c71b1b";
+    p.currentColor = interpolateColor(p.currentColor, p.color);
+    const [r, g, b] = p.currentColor.map((v) => Math.round(v));
+
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+
     const padding = 1;
     ctx.fillRect(
       p.x + padding / 2,
