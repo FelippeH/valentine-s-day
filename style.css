@@ -1,13 +1,9 @@
 body {
   margin: 0;
   overflow: hidden;
+  background: #222;
   height: 100vh;
   position: relative;
-}
-
-canvas {
-  background: #222222;
-  display: block;
 }
 
 #toggleBtn {
@@ -41,4 +37,9 @@ canvas {
 
 #toggleBtn.active:hover {
   background-color: #a11616;
+}
+
+canvas {
+  background: #222;
+  display: block;
 }
