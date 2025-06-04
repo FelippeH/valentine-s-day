@@ -34,7 +34,7 @@ function generateParticles() {
   }
 
   const centerX = width / 2;
-  const centerY = height / 1.9;
+  const centerY = height / 2;
 
   const heartMap = [];
   let colMin = fixedCols,
