@@ -19,7 +19,12 @@ function generateParticles() {
   const width = (canvas.width = window.innerWidth);
   const height = (canvas.height = window.innerHeight);
 
-  const gridSize = Math.min(width / fixedCols, height / fixedRows);
+  let gridSize = width / fixedCols;
+  const maxHeight = gridSize * fixedRows;
+
+  if (maxHeight > height) {
+    gridSize = height / fixedRows;
+  }
   const centerX = width / 2;
   const centerY = height / 2;
 
