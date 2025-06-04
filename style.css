@@ -41,7 +41,7 @@ body {
 
 canvas {
   position: absolute;
-  bottom: 44px;
+  bottom: 40px;
   background: #22222249;
   z-index: 1;
 }
@@ -52,7 +52,7 @@ canvas {
   left: 50%;
   transform: translateX(-50%);
   margin: auto;
-  color: #8a8a8a;
+  color: #666666;
   font-size: 0.75rem;
   z-index: 10;
   justify-content: center;
