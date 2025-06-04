@@ -25,6 +25,14 @@ function generateParticles() {
   if (maxHeight > height) {
     gridSize = height / fixedRows;
   }
+
+  if (width < 600) {
+    const minGridSize = 18;
+    if (gridSize < minGridSize) {
+      gridSize = minGridSize;
+    }
+  }
+
   const centerX = width / 2;
   const centerY = height / 2;
 
