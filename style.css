@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #222;
+  height: 100vh;
+  position: relative;
+}
+
+#toggleBtn {
+  position: fixed;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 10px 25px;
+  font-size: 30px;
+  background-color: #c71b1b;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#toggleBtn:hover {
+  background-color: #a11616;
+}
+
+canvas {
+  background: #222;
+  display: block;
+}
