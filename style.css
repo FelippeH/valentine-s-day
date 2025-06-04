@@ -1,21 +1,40 @@
 body {
   margin: 0;
   overflow: hidden;
-  background: #222;
   height: 100vh;
   position: relative;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("./images/heart.jpg") no-repeat center center fixed;
+  background-size: cover;
+  filter: grayscale(100%);
+  z-index: -1;
+}
+
+canvas {
+  background: #222222f3;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
 #toggleBtn {
   position: fixed;
-  bottom: 14%;
+  bottom: 13%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   padding: 10px 25px;
   font-size: 30px;
-  background-color: #c71b1b;
-  color: white;
+  background-color: #9c9c9c;
+  font-weight: 600;
   border: none;
   border-radius: 9px;
   cursor: pointer;
@@ -27,10 +46,14 @@ body {
 }
 
 #toggleBtn:hover {
-  background-color: #a11616;
+  background-color: #2e2e2e;
+  color: #ffffff;
 }
 
-canvas {
-  background: #222;
-  display: block;
+#toggleBtn.active {
+  background-color: #c71b1b;
+}
+
+#toggleBtn.active:hover {
+  background-color: #a11616;
 }
