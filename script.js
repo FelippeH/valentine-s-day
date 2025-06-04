@@ -79,6 +79,7 @@ generateParticles();
 
 const btn = document.getElementById("toggleBtn");
 btn.addEventListener("click", () => {
+  btn.classList.toggle("active");
   isAssembled = !isAssembled;
   btn.textContent = isAssembled ? "😍" : "😢";
 
