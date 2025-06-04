@@ -1,13 +1,11 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const targetCols = 30;
-const gridSize = canvas.width / targetCols;
-const cols = targetCols;
-const rows = Math.floor(canvas.height / gridSize);
-
 let particles = [];
 let isAssembled = false;
+
+const fixedCols = 180;
+const fixedRows = 90;
 
 function mapCoord(i, max, minVal, maxVal) {
   return minVal + (i / max) * (maxVal - minVal);
@@ -17,30 +15,22 @@ function isInsideHeart(x, y) {
   return Math.pow(x * x + y * y - 1.2, 3) - x * x * y * y * y <= 0;
 }
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
+function generateParticles() {
+  const width = (canvas.width = window.innerWidth);
+  const height = (canvas.height = window.innerHeight);
 
-function buildHeart() {
-  resizeCanvas();
+  const gridSize = Math.min(width / fixedCols, height / fixedRows);
+  const centerX = width / 2;
+  const centerY = height / 2;
 
-  particles = [];
-
-  const cols = Math.floor(canvas.width / gridSize);
-  const rows = Math.floor(canvas.height / gridSize);
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-
-  let colMin = cols,
-    colMax = 0;
   const heartMap = [];
+  let colMin = fixedCols,
+    colMax = 0;
 
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const x = mapCoord(col, cols, -3.75, 3.75);
-      const y = mapCoord(row, rows, 2, -2);
-
+  for (let row = 0; row < fixedRows; row++) {
+    for (let col = 0; col < fixedCols; col++) {
+      const x = mapCoord(col, fixedCols, -3.75, 3.75);
+      const y = mapCoord(row, fixedRows, 2, -2);
       if (isInsideHeart(x, y)) {
         if (col < colMin) colMin = col;
         if (col > colMax) colMax = col;
@@ -51,15 +41,15 @@ function buildHeart() {
 
   const heartWidthInCols = colMax - colMin + 1;
 
-  heartMap.forEach(({ row, col }) => {
+  particles = heartMap.map(({ row, col }) => {
     const targetX =
       centerX - (heartWidthInCols / 2) * gridSize + (col - colMin) * gridSize;
-    const targetY = centerY - (rows / 2) * gridSize + row * gridSize;
+    const targetY = centerY - (fixedRows / 2) * gridSize + row * gridSize;
 
-    const startX = Math.random() * canvas.width;
-    const startY = Math.random() * canvas.height;
+    const startX = Math.random() * width;
+    const startY = Math.random() * height;
 
-    particles.push({
+    return {
       x: startX,
       y: startY,
       targetX: isAssembled ? targetX : startX,
@@ -68,11 +58,12 @@ function buildHeart() {
       originalTargetY: targetY,
       size: gridSize,
       speed: 0.01 + Math.random() * 0.005,
-    });
+    };
   });
 }
 
-//botão
+generateParticles();
+
 const btn = document.getElementById("toggleBtn");
 btn.addEventListener("click", () => {
   isAssembled = !isAssembled;
@@ -89,10 +80,8 @@ btn.addEventListener("click", () => {
   });
 });
 
-//animação
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   particles.forEach((p) => {
     p.x += (p.targetX - p.x) * p.speed;
     p.y += (p.targetY - p.y) * p.speed;
@@ -106,11 +95,10 @@ function animate() {
       p.size - padding
     );
   });
-
   requestAnimationFrame(animate);
 }
-
-window.addEventListener("resize", buildHeart);
-
-buildHeart();
 animate();
+
+window.addEventListener("resize", () => {
+  generateParticles();
+});
