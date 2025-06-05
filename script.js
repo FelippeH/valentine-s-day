@@ -72,7 +72,7 @@ function generateParticles() {
       originalTargetX: targetX,
       originalTargetY: targetY,
       size: gridSize,
-      speed: 0.01 + Math.random() * 0.005,
+      speed: 0.0075 + Math.random() * 0.005,
       color,
       currentColor: [156, 156, 156],
     };
@@ -100,7 +100,7 @@ btn.addEventListener("click", () => {
   });
 });
 
-function interpolateColor(current, target, factor = 0.015) {
+function interpolateColor(current, target, factor = 0.0075) {
   return current.map((c, i) => c + (target[i] - c) * factor);
 }
 
