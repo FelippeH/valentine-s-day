@@ -12,7 +12,7 @@ function mapCoord(i, max, minVal, maxVal) {
 }
 
 function isInsideHeart(x, y) {
-  return Math.pow(x * x + y * y - 1.2, 3) - x * x * y * y * y <= 0;
+  return Math.pow(x * x + y * y - 1.5, 3) - x * x * y * y * y <= 0;
 }
 
 function generateParticles() {
@@ -27,14 +27,14 @@ function generateParticles() {
   }
 
   if (width < 600) {
-    const minGridSize = 9;
+    const minGridSize = 8;
     if (gridSize < minGridSize) {
       gridSize = minGridSize;
     }
   }
 
   const centerX = width / 2;
-  const centerY = height / 2.1;
+  const centerY = height / 2;
 
   const heartMap = [];
   let colMin = fixedCols,
@@ -72,7 +72,7 @@ function generateParticles() {
       originalTargetX: targetX,
       originalTargetY: targetY,
       size: gridSize,
-      speed: 0.0075 + Math.random() * 0.005,
+      speed: 0.005 + Math.random() * 0.0001,
       color,
       currentColor: [156, 156, 156],
     };
@@ -85,7 +85,7 @@ const btn = document.getElementById("toggleBtn");
 btn.addEventListener("click", () => {
   btn.classList.toggle("active");
   isAssembled = !isAssembled;
-  btn.textContent = isAssembled ? "😍" : "😢";
+  btn.textContent = isAssembled ? "❤️" : "💔";
 
   particles.forEach((p) => {
     if (isAssembled) {
@@ -100,7 +100,7 @@ btn.addEventListener("click", () => {
   });
 });
 
-function interpolateColor(current, target, factor = 0.0075) {
+function interpolateColor(current, target, factor = 0.0033) {
   return current.map((c, i) => c + (target[i] - c) * factor);
 }
 
