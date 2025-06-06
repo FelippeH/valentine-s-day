@@ -27,7 +27,7 @@ function generateParticles() {
   }
 
   if (width < 600) {
-    const minGridSize = 8;
+    const minGridSize = 8.5;
     if (gridSize < minGridSize) {
       gridSize = minGridSize;
     }
@@ -72,7 +72,7 @@ function generateParticles() {
       originalTargetX: targetX,
       originalTargetY: targetY,
       size: gridSize,
-      speed: 0.005 + Math.random() * 0.0001,
+      speed: 0.006 + Math.random() * 0.0001,
       color,
       currentColor: [156, 156, 156],
     };
