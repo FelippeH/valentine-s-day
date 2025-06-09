@@ -42,7 +42,7 @@ body {
 canvas {
   position: absolute;
   bottom: 40px;
-  background: #22222249;
+  background: #0000007c;
   z-index: 1;
 }
 
